@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 /**
  * 
@@ -16,12 +18,26 @@ public class Car {
 	@Id
 	@GeneratedValue
 	private Long id;
+	
+	@NotEmpty(message = "Please provide a model name")
 	private String model;
+	
+	@NotEmpty(message = "Please provide a brand name")
 	private String brand;
+	
+	@NotEmpty(message = "Please provide version")
 	private String version;
+	
+	@NotNull(message = "Please provide yearOfRelease")
 	private Integer yearOfRelease;
+	
+	@NotEmpty(message = "Please provide price")
 	private String price;
+	
+	@NotNull(message = "Please provide fuelConsumption")
 	private Double fuelConsumption;
+	
+	@NotNull(message = "Please provide annualMaintenanceCost")
 	private Double annualMaintenanceCost;
 
 	private static final Integer MONTHS_IN_YEAR = 12;

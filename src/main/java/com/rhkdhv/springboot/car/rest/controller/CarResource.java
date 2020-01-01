@@ -4,6 +4,9 @@ import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+import javax.validation.constraints.Min;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -36,7 +39,7 @@ public class CarResource {
 	 * @throws CarNotFoundException
 	 */
 	@PostMapping("/cars")
-	public ResponseEntity<Object> addCar(@RequestBody Car car) throws CarNotFoundException {
+	public ResponseEntity<Object> addCar(@Valid @RequestBody Car car) throws CarNotFoundException {
 		Car newCar = carService.saveCar(car);
 		if (null == newCar) {
 			return ResponseEntity.notFound().build();
@@ -71,8 +74,8 @@ public class CarResource {
 	 * @throws CarNotFoundException
 	 */
 	@GetMapping("/cars/{distanceToTravel}/{fuelPricePerLitre}")
-	public ResponseEntity<Object>  retrieveCarsByMaintenanceCost(@PathVariable Integer distanceToTravel,
-			@PathVariable Double fuelPricePerLitre) throws CarNotFoundException {
+	public ResponseEntity<Object>  retrieveCarsByMaintenanceCost(@PathVariable @Min(1) Integer distanceToTravel,
+			@PathVariable @Min(1) Double fuelPricePerLitre) throws CarNotFoundException {
 		List<Car> carsList = carService.findCardsByMaintenanceCost(distanceToTravel, fuelPricePerLitre);
 		if (null == carsList) {
 			return ResponseEntity.notFound().build();
