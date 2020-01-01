@@ -7,7 +7,7 @@ import javax.persistence.Table;
 
 /**
  * 
- * Entity class 
+ * Entity class
  *
  */
 @Entity
@@ -23,8 +23,9 @@ public class Car {
 	private String price;
 	private Double fuelConsumption;
 	private Double annualMaintenanceCost;
-	
-	private static final Integer TIME_DURATION = 12 * 4; 
+
+	private static final Integer MONTHS_IN_YEAR = 12;
+	private static final Integer TIME_DURATION_IN_YEARS_EXCEPT_FIRST_YEAR = 3;
 
 	public String getModel() {
 		return model;
@@ -94,12 +95,13 @@ public class Car {
 		this.id = id;
 	}
 
-	public Double getMaintenanceCost(Integer kiloMetersToTravelPerMonth,
-			Double fuelPricePerLitre) {
-		Integer totalDistanceToBeTravelled = kiloMetersToTravelPerMonth * TIME_DURATION;
+	public Double getMaintenanceCost(Integer kiloMetersToTravelPerMonth, Double fuelPricePerLitre) {
+		Integer totalDistanceToBeTravelled = kiloMetersToTravelPerMonth * MONTHS_IN_YEAR;
 		Double totalFuelToBeConsumed = totalDistanceToBeTravelled / this.getFuelConsumption();
 		Double totalFuelCost = totalFuelToBeConsumed * fuelPricePerLitre;
-		return totalFuelCost + Double.parseDouble(this.getPrice()) + this.getAnnualMaintenanceCost();
+		Double costOfFirstYear = totalFuelCost + Double.parseDouble(this.getPrice()) + this.getAnnualMaintenanceCost();
+		Double costOfSubsequentYear = costOfFirstYear - Double.parseDouble(this.getPrice());
+		return costOfFirstYear + (costOfSubsequentYear * TIME_DURATION_IN_YEARS_EXCEPT_FIRST_YEAR);
 
 	}
 
