@@ -6,11 +6,13 @@ This is a Maven Spring boot application.
 Steps to run :
 1. Clone the project https://github.com/dixitank/JavaCarAppBackEnd.git
 2. Make sure maven is installed on your machine . 
-3. go to the project location where the project is cloned .
+3. Go to the project location where the project is cloned .
 4. Run mvn clean install which will create a war file in the project_location/target directory .
 5. Run the war file afrom the project location as:
    java -jar target/car-rest-service-0.0.1-SNAPSHOT.jar
 6. This will start the spring boot application .
+7. All the unit tests for every layer are present inside src/test/java package. 
+8. This project uses in memory H2 database to store car data. 
 
 Now, following steps can be performed to test the APIs : 
 
