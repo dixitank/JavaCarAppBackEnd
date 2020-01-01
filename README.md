@@ -15,12 +15,13 @@ Steps to run :
 Now, following steps can be performed to test the APIs : 
 
 To add new cars , following APIs to be used : 
-  curl -X POST http://localhost:8080/cars -H 'Content-type:application/json' -d '{"model": "Focus", "brand": "Ford", "version": "2.0 GLX", "yearOfRelease": 2019, "price": 18000,
-	"fuelConsumption": 11, "annualMaintenanceCost": 6000}'
   
-  curl -X POST http://localhost:8080/cars -H 'Content-type:application/json' -d '{"model": "Fusion", "brand": "Ford", "version": "Hybrid SE", "yearOfRelease": 2019, "price": 23000,
+	curl -X POST http://localhost:8080/cars -H 'Content-type:application/json' -d '{"model": "Focus", "brand": "Ford", "version": "2.0 GLX", "yearOfRelease": 2019, "price": 18000,
+	"fuelConsumption": 11, "annualMaintenanceCost": 6000}'
+	
+	curl -X POST http://localhost:8080/cars -H 'Content-type:application/json' -d '{"model": "Fusion", "brand": "Ford", "version": "Hybrid SE", "yearOfRelease": 2019, "price": 23000,
 	"fuelConsumption": 9.5, "annualMaintenanceCost": 9000}'
-
+	
 	curl -X POST http://localhost:8080/cars -H 'Content-type:application/json' -d '{"model": "C3", "brand": "Citroen", "version": "1.6", "yearOfRelease": 2018, "price": 15000,
 	"fuelConsumption": 13, "annualMaintenanceCost": 6000}'
 
